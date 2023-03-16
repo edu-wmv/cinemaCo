@@ -1,7 +1,20 @@
 export default {
-  background: '#272727',
-  tab_bar: '#191919ED',
+  background: '#181818',
+  tab_bar: '#121212',
+  top_gradient: '#181818',
+  box: '#252525',
   white: '#FFF',
-  tint: '#FFB703',
-  tabIcons: '#37373766'
-};
+  tint: '#FF4B20',
+  tint_light: '#fe643f',
+  tint2: '#FFB703',
+  tabIcons: '#37373766',
+  text: '#FFFAFA',
+  city: '#FEF7F1',
+  text_gray: '#686868',
+  text_gray_light: '#999999',
+  text_gray_lighter: '#CCCCCC',
+  text_gray_lightest: '#E0E0E0',
+  text_gray_dark: '#444444',
+  text_gray_darker: '#666666',
+  gray1: '#303030',
+}

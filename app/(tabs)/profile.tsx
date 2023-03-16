@@ -5,7 +5,7 @@ import { Text, View } from 'react-native';
 export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cinemas Page</Text>
+      <Text style={styles.title}>Profile Page</Text>
     </View>
   );
 }
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
   separator: {
     marginVertical: 30,

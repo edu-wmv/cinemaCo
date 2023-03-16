@@ -1,28 +1,11 @@
-import { StyleSheet } from 'react-native';
-
-import { Text, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
+import CinemaPage from '../../components/CinemasPage';
 
 export default function CinemasScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cinemas Page</Text>
+    <View>
+      <CinemaPage />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

@@ -1,15 +1,11 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { Link, Tabs } from 'expo-router';
 import React, { useEffect, useState } from 'react';
+import { Tabs } from 'expo-router';
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { BottomTabBar } from '@react-navigation/bottom-tabs'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
-import { height, width } from '../../constants/Metrics';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
+import { tabIconSize, width } from '../../constants/Metrics';
+import Header from '../../components/Header';
 
 function MyTabBar({ state, descriptors, navigation }: any) {
   const [translateX] = useState(new Animated.Value(0));
@@ -28,7 +24,7 @@ function MyTabBar({ state, descriptors, navigation }: any) {
   }, [state.index])
 
   return (
-    <View style={{ flexDirection: 'row', backgroundColor: Colors.tab_bar, width, height: 60, alignItems: 'center', justifyContent: 'space-around'}}>
+    <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0, backgroundColor: Colors.tab_bar, width, height: 70, alignItems: 'center', justifyContent: 'space-around', borderTopLeftRadius: 20, borderTopRightRadius: 20}}>
       <Animated.View style={[{ width: TAB_WIDTH, alignItems: 'center', transform: [{translateX}] }, StyleSheet.absoluteFillObject]}>
         <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: Colors.tint, position: 'absolute', bottom: 15 }} />
       </Animated.View>
@@ -73,6 +69,7 @@ function MyTabBar({ state, descriptors, navigation }: any) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
+            key={index}
           >
             <TabIcon tabIcon={tabBarIcon} isFocused={isFocused} />
           </TouchableOpacity>
@@ -100,35 +97,19 @@ const TabIcon = ({tabIcon, isFocused}: any) => {
   })
 
   return (
-    <Animated.View style={{ transform: [{translateY}] }}>
-      <MaterialCommunityIcons name={tabIcon} size={24} color={isFocused ? Colors.tint : Colors.tabIcons} style={{ }} />
+    <Animated.View style={{ transform: [{translateY}], height: tabIconSize, width: width/10, alignItems: 'center', justifyContent: 'center' }}>
+      <MaterialCommunityIcons type name={tabIcon} size={tabIconSize} color={isFocused ? Colors.tint : Colors.tabIcons}/>
     </Animated.View>
   )
 }
 
 export default function TabLayout() {
-  const [translateX] = useState(new Animated.Value(0))
-  const translateTab = (index: any) => {
-    Animated.spring(translateX, {
-      toValue: index * (width / 4),
-      useNativeDriver: true,
-    }).start();
-  }
-
   const TabArr = [
-    { name: 'home', icon: 'filmstrip' },
-    { name: 'cinemas', icon: 'map-marker' },
-    { name: 'tickets', icon: 'ticket-confirmation'},
-    { name: 'profile', icon: 'account' },
+    { name: 'index', icon: 'home' },
+    { name: 'profile', icon: 'filmstrip-box' },
+    { name: 'cinemas', icon: 'theater' },
+    { name: 'tickets', icon: 'ticket-confirmation-outline'},
   ]
-
-  const TabBar = (props: any) => {
-    return (
-      <View style={{width}}>
-        
-      </View>
-    )
-  }
   
   return (
     <Tabs
@@ -136,7 +117,6 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.tint,
       }}
-      initialRouteName="home"
       >
       {TabArr.map((_, index) => {
         return (
